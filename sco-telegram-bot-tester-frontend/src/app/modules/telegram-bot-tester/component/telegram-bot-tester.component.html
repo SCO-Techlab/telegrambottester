@@ -1,0 +1,44 @@
+<div class="telegram-bot-tester">
+  <mat-card class="telegram-bot-tester__card mat-elevation-z8" [ngClass]="{
+    'telegram-bot-tester__card--mobile': resolutionService.getMode() == resolutionService.resolutionConstants.MOBILE,
+    'telegram-bot-tester__card--tablet': resolutionService.getMode() == resolutionService.resolutionConstants.TABLET
+  }">
+    <mat-card-content>
+      <div class="row">
+        <div class="col-12">
+          <form [formGroup]="sendMessageForm">
+
+            <mat-form-field appearance="fill" class="d-block mt-2" [ngClass]="{'valid-input': !sendMessageForm.controls.token.invalid}">
+              <mat-label>{{'label.telegram-bot.component.form.token' | appTranslate}}</mat-label>
+              <input matInput [placeholder]="'label.telegram-bot.component.form.token.placeholder' | appTranslate" formControlName="token">
+              <mat-error *ngIf="sendMessageForm.controls.token.invalid">{{formsService.getError('token', formErrors)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="d-block mt-2" [ngClass]="{'valid-input': !sendMessageForm.controls.chat_id.invalid}">
+              <mat-label>{{'label.telegram-bot.component.form.chat_id' | appTranslate}}</mat-label>
+              <input matInput [placeholder]="'label.telegram-bot.component.form.chat_id.placeholder' | appTranslate" formControlName="chat_id">
+              <mat-error *ngIf="sendMessageForm.controls.chat_id.invalid">{{formsService.getError('chat_id', formErrors)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="d-block mt-2" [ngClass]="{'valid-input': !sendMessageForm.controls.text.invalid}">
+              <mat-label>{{'label.telegram-bot.component.form.text' | appTranslate}}</mat-label>
+              <input matInput [placeholder]="'label.telegram-bot.component.form.text.placeholder' | appTranslate" formControlName="text">
+              <mat-error *ngIf="sendMessageForm.controls.text.invalid">{{formsService.getError('text', formErrors)}}</mat-error>
+            </mat-form-field>
+    
+            <div class="row">
+              <div class="col-12 telegram-bot-tester__buttons-box">
+                <button mat-raised-button color="warn" class="telegram-bot-tester__buttons-box--margin-btn" (click)="onCLickClean()">
+                  {{'label.telegram-bot.component.form.btn.clean' | appTranslate}}
+                </button>
+                <button mat-raised-button color="accent" (click)="onClickSubmit()">
+                  {{'label.telegram-bot.component.form.btn.success' | appTranslate}}
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

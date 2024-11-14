@@ -1,0 +1,156 @@
+/* Angular Material CSS */
+*, *:before, *:after { 
+    box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    -ms-box-sizing: border-box;
+}
+
+html, body { 
+    height: 100%; 
+}
+
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+/* Input Classes */
+.valid-input {
+    .mat-form-field-label {
+        color: #69f0ae !important;
+    }
+    .mat-form-field-underline {
+        background-color: #69f0ae !important;
+    }
+    .mat-form-field-ripple {
+        background-color: #69f0ae !important;
+    }
+    .mat-form-field-input {
+        background-color: #69f0ae !important;
+    }
+}
+
+/* Toast Classess */
+.success-snackbar {
+    background-color: #69f0ae!important;
+    color: #fff;
+}
+
+.error-snackbar {
+    background-color: #f44336!important;
+    color: #fff;
+}
+
+.warning-snackbar {
+    background-color: #ffc107!important;
+    color: #fff;
+}
+
+.info-snackbar {
+    background-color: #17a2b8 !important;
+    color: #fff;
+}
+
+/* Data Table */
+.data-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+
+    .mat-table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        display: table;
+        border-collapse: collapse;
+        margin: 0px;
+    }
+    
+    .mat-row,
+    .mat-header-row {
+        display: table-row;
+    }
+    
+    .mat-cell,
+    .mat-header-cell {
+        word-wrap: initial;
+        display: table-cell;
+        padding: 0px 5px;
+        line-break: unset;
+        width: 10%;
+        white-space: nowrap;
+        overflow: hidden;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    &__text-error {
+        color: #f44336 !important;
+    } 
+
+    &__text-success {
+        color: #69f0ae !important;
+    } 
+    
+    &__actions {
+
+        &__th {
+            text-align: right !important;
+
+            &--action {
+                color: #fff !important;
+            } 
+        }
+
+        &__td {
+            text-align: right !important;
+
+           &--delete {
+                color: #f44336 !important;
+           }
+
+           &--edit {
+            color: #69f0ae !important;
+            }
+        }
+    }
+}
+
+.no-data-table {
+    text-align: center;
+
+    &__text {
+        margin-top: 10px;
+    }
+}
+
+/* Table Paginator */
+.table-paginator {
+    .mat-paginator {
+        display: flex !important;
+        justify-content: center !important;
+    } 
+}
+
+::-webkit-scrollbar {
+    background: transparent !important;
+    height: 5px !important;
+    width: 5px !important;
+}
+ 
+ ::-webkit-scrollbar-thumb {
+    background: lightgray !important;
+}
+
+/* Slide Toggle */
+.slide-toggle {
+    width: 100% !important;
+    text-align: left !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+
+    &__toggle {
+        padding-left: 10px !important;
+    }
+}

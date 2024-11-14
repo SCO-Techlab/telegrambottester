@@ -1,0 +1,76 @@
+<mat-drawer-container class="app">
+    <mat-drawer-content>
+      <mat-card class="header">
+        <div>
+          <mat-icon aria-hidden="true" class="header__icon">
+            telegram
+          </mat-icon>
+        </div>
+        <span class="header__spacer-icon"></span>
+        <div>
+          <button mat-stroked-button color="basic" class="header__home-btn" (click)="onClickHomeLogo()" [ngClass]="{
+            'header__home-btn--mobile': viewMode == resolutionService.resolutionConstants.MOBILE
+          }">
+            {{cacheService.getElement(cacheService.cacheConstants.TITLE)}}
+          </button>
+        </div>
+        <span class="header__spacer-menu"></span>
+        <div [hidden]="viewMode != resolutionService.resolutionConstants.WEB || loggedUser">
+          <button mat-stroked-button color="basic" class="header__menu-btn header__menu-btn--mr" (click)="onClickSignUp()">
+            {{'label.header.btn.signup' | appTranslate}}
+          </button>
+          <button mat-stroked-button color="basic" class="header__menu-btn" (click)="onClickLogIn()">
+            {{'label.header.btn.login' | appTranslate}}
+          </button>
+        </div>
+        <div [hidden]="viewMode == resolutionService.resolutionConstants.WEB || loggedUser">
+          <button mat-stroked-button color="basic" [matMenuTriggerFor]="loginMenu" class="header__menu-btn">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <mat-menu #loginMenu="matMenu">
+            <button mat-menu-item (click)="onClickSignUp()">
+              <mat-icon>person</mat-icon>
+              <span>{{'label.header.btn.signup' | appTranslate}}</span>
+            </button>
+            <button mat-menu-item (click)="onClickLogIn()">
+              <mat-icon>login</mat-icon>
+              <span>{{'label.header.btn.login' | appTranslate}}</span>
+            </button>
+          </mat-menu>
+        </div>
+        <div [hidden]="!loggedUser">
+          <button mat-stroked-button color="basic" [matMenuTriggerFor]="logoutMenu" class="header__menu-btn">
+            <mat-icon>account_circle</mat-icon>
+          </button>
+          <mat-menu #logoutMenu="matMenu">
+            <button mat-menu-item (click)="router.navigateByUrl('manage-users')" [hidden]="!loggedUser || loggedUser && loggedUser.role != 'ADMIN'">
+              <mat-icon>person</mat-icon>
+              <span>{{'label.header.btn.manage-users' | appTranslate}}</span>
+            </button>
+            <button mat-menu-item (click)="router.navigateByUrl('')">
+              <mat-icon>adb</mat-icon>
+              <span>{{'label.header.btn.telegram-bot' | appTranslate}}</span>
+            </button>
+            <button mat-menu-item (click)="router.navigateByUrl('results')">
+              <mat-icon>table_view</mat-icon>
+              <span>{{'label.header.btn.telegram-results' | appTranslate}}</span>
+            </button>
+            <button mat-menu-item (click)="onClickLogOut()">
+              <mat-icon>logout</mat-icon>
+              <span>{{'label.header.btn.logout' | appTranslate}}</span>
+            </button>
+          </mat-menu>
+        </div>
+      </mat-card>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<div class="spinner" *ngIf="spinnerService.getShow()">
+  <mat-progress-spinner class="spinner__spinner"
+    [color]="spinnerService.spinnerConstants.COLOR_PRIMARY"
+    [mode]="spinnerService.spinnerConstants.MODE_INDETERMINATE">
+  </mat-progress-spinner>
+</div>
