@@ -165,9 +165,7 @@ export class UsersService {
 
   private async populatePublicUser() {
     const existPublicUser: IUser = await this.findUserByName(usersConstants.PUBLIC.NAME);
-    if (existPublicUser) {
-      return;
-    }
+    if (existPublicUser) return;
 
     const userPublicDto: UserDto = {
       name: usersConstants.PUBLIC.NAME,
@@ -188,9 +186,7 @@ export class UsersService {
 
   private async populateAdminUser() {
     const existAdminUser: IUser = await this.findUserByName(usersConstants.ADMIN.NAME);
-    if (existAdminUser) {
-      return;
-    }
+    if (existAdminUser) return;
 
     const userAdminDto: UserDto = {
       name: usersConstants.ADMIN.NAME,
