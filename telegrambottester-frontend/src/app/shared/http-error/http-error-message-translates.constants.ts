@@ -29,6 +29,11 @@ export const httpErrorMessageTranslates = {
       TELEGRAM_BOT_RESULT_NOT_FOUND: 'Resultado del bot de telegram no encontrado',
       UNNABLE_CREATE_TELEGRAM_BOT_RESULT: 'Imposible crear resultado del bot de telegram',
     },
+    TELEGRAM_BOT_CHATS: {
+      TELEGRAM_BOT_CHAT_NOT_FOUND: 'Chat del bot de telegram no encontrado',
+      UNNABLE_CREATE_TELEGRAM_BOT_CHAT: 'Imposible crear el chat del bot de telegram',
+      TELEGRAM_BOT_CHAT_ALREADY_EXIST: 'El chat del bot de telegram ya existe',
+    },
     APP: {
       METHOD_NOT_IMPLEMENTED: 'Método no implementado',
       METHOD_NOT_ALLOWED: 'Método no permitido',
@@ -63,6 +68,11 @@ export const httpErrorMessageTranslates = {
     TELEGRAM_BOT_RESULTS: {
       TELEGRAM_BOT_RESULT_NOT_FOUND: 'Telegram bot result not found',
       UNNABLE_CREATE_TELEGRAM_BOT_RESULT: 'Unnable to create telegram bot result',
+    },
+    TELEGRAM_BOT_CHATS: {
+      TELEGRAM_BOT_CHAT_NOT_FOUND: 'Telegram bot chat not found',
+      UNNABLE_CREATE_TELEGRAM_BOT_CHAT: 'Unnable to create telegram bot chat',
+      TELEGRAM_BOT_CHAT_ALREADY_EXIST: 'Telegram bot chat already exist',
     },
     APP: {
       METHOD_NOT_IMPLEMENTED: 'Method not implemented',
