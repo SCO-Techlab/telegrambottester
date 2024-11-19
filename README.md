@@ -4,7 +4,7 @@ Telegram Bot Tester es una aplicación web que simplifica la tarea de probar y d
 Con Telegram Bot Tester, puedes realizar pruebas exhaustivas de mensajería con bots de Telegram de manera fácil y eficiente.
 
 # Versiones
-- Node: 18.18.0
+- Node: 16.17.0
 - Angular: 13.1.0
     - Material: 13.3.9
 - Nest: 10.0.0
