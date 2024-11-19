@@ -17,6 +17,7 @@ import { AuthConfig } from './modules/auth/config/auth.config';
 import { TelegramBotResultsModule } from './modules/telegram-bot-results/telegram-bot-results.module';
 import { PublicMiddleware } from './middlewares/public.middleware';
 import { LoggerService } from './app.logger.service';
+import { TelegramBotChatsModule } from './modules/telegram-bot-chats/telegram-bot-chats.module';
 
 @Module({
   imports: [
@@ -80,6 +81,7 @@ import { LoggerService } from './app.logger.service';
     UsersModule,
     TelegramBotModule,
     TelegramBotResultsModule,
+    TelegramBotChatsModule,
   ],
   providers: [
     LoggerService,

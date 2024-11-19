@@ -28,6 +28,11 @@ export const httpErrorMessages = {
     TELEGRAM_BOT_RESULT_NOT_FOUND: 'Telegram bot result not found',
     UNNABLE_CREATE_TELEGRAM_BOT_RESULT: 'Unnable to create telegram bot result',
   },
+  TELEGRAM_BOT_CHATS: {
+    TELEGRAM_BOT_CHAT_NOT_FOUND: 'Telegram bot chat not found',
+    UNNABLE_CREATE_TELEGRAM_BOT_CHAT: 'Unnable to create telegram bot chat',
+    TELEGRAM_BOT_CHAT_ALREADY_EXIST: 'Telegram bot chat already exist',
+  },
   APP: {
     METHOD_NOT_IMPLEMENTED: 'Method not implemented',
     METHOD_NOT_ALLOWED: 'Method not allowed',
