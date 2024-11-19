@@ -2,8 +2,6 @@ import { Component, HostListener, OnInit } from "@angular/core";
 import { ConfigService } from "./shared/config/config.service";
 import { WebSocketService } from "./websocket/websocket.service";
 import { SpinnerService } from "./shared/spinner/spinner.service";
-import { CacheService } from './shared/cache/cache.service';
-import { TranslateService } from './shared/translate/translate.service';
 import { ResolutionService } from './shared/resolution/resolution.service';
 import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
@@ -30,8 +28,6 @@ export class AppComponent implements OnInit {
     private readonly configService: ConfigService,
     private readonly websocketsService: WebSocketService,
     public readonly spinnerService: SpinnerService,
-    public readonly cacheService: CacheService,
-    private readonly translateService: TranslateService,
     public readonly resolutionService: ResolutionService,
     public readonly router: Router,
     private readonly store: Store,
@@ -43,10 +39,6 @@ export class AppComponent implements OnInit {
 
     this.viewMode = this.resolutionService.getMode();
 
-    this.cacheService.setElement(
-      this.cacheService.cacheConstants.TITLE, 
-      this.translateService.getTranslate('label.header.cache.title')
-    );
     this.websocketsService.connect();
   }
 

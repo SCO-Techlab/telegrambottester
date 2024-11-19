@@ -11,7 +11,7 @@
           <button mat-stroked-button color="basic" class="header__home-btn" (click)="onClickHomeLogo()" [ngClass]="{
             'header__home-btn--mobile': viewMode == resolutionService.resolutionConstants.MOBILE
           }">
-            {{cacheService.getElement(cacheService.cacheConstants.TITLE)}}
+            <span>Telegram bot tester</span>
           </button>
         </div>
         <span class="header__spacer-menu"></span>

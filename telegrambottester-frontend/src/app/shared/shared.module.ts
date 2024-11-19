@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsService } from './forms/forms.service';
-import { CacheService } from './cache/cache.service';
 import { ConfigService } from './config/config.service';
 import { ConfigPipe } from './config/config.pipe';
 import { ResolutionService } from './resolution/resolution.service';
@@ -63,7 +62,6 @@ import { ToastComponent } from './toast/toast/toast.component';
   ],
   providers:[
     FormsService,
-    CacheService,
     ConfigService,
     ResolutionService,
     TranslateService,
