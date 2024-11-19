@@ -1,7 +1,13 @@
-# SCO - Telegram bot tester
+# Telegrambottester  -  SCO Techlab
 
 Telegram Bot Tester es una aplicación web que simplifica la tarea de probar y depurar bots de Telegram. 
 Con Telegram Bot Tester, puedes realizar pruebas exhaustivas de mensajería con bots de Telegram de manera fácil y eficiente.
+
+# Versiones
+- Node: 18.18.0
+- Angular: 13.1.0
+    - Material: 13.3.9
+- Nest: 10.0.0
 
 # Características principales
 
@@ -10,7 +16,7 @@ Con Telegram Bot Tester, puedes realizar pruebas exhaustivas de mensajería con 
 - Interfaz Intuitiva: Con una interfaz de usuario limpia y fácil de usar, Telegram Bot Tester te permite realizar pruebas de mensajería de manera rápida y sin complicaciones.
 
 # Ejemplo
-- http://scoapps.es:3000/
+- https://telegrambottester-sco-techlab.es:3000/
 - Public // Public123456! (No es necesario iniciar sesión para la realización de pruebas de mensajeria)
 
 # Envío de mensajes

@@ -1,10 +1,10 @@
-import { Token } from './../../../../sco-telegram-bot-tester-backend/src/modules/auth/class/token';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TranslateService } from '../shared/translate/translate.service';
 import { Select } from '@ngxs/store';
 import { AuthState } from '../modules/auth/store/auth.state';
+import { Token } from '../modules/auth/model/token';
 
 @Injectable({ providedIn: 'root' })
 export class HeadersInterceptor implements HttpInterceptor {
