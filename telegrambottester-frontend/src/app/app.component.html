@@ -51,6 +51,10 @@
               <mat-icon>adb</mat-icon>
               <span>{{'label.header.btn.telegram-bot' | appTranslate}}</span>
             </button>
+            <button mat-menu-item (click)="router.navigateByUrl('chats')">
+              <mat-icon>chat</mat-icon>
+              <span>{{'label.header.btn.telegram-chats' | appTranslate}}</span>
+            </button>
             <button mat-menu-item (click)="router.navigateByUrl('results')">
               <mat-icon>table_view</mat-icon>
               <span>{{'label.header.btn.telegram-results' | appTranslate}}</span>

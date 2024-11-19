@@ -26,6 +26,7 @@ import { AuthGuard } from './guards/auth.guard.service';
 import { TelegramBotResultsModule } from './modules/telegram-bot-results/telegram-bot-results.module';
 import { UsersModule } from './modules/users/users.module';
 import { RoleGuard } from './guards/role.guard.service';
+import { TelegramBotChatsModule } from './modules/telegram-bot-chats/telegram-bot-chats.module';
 
 export function configFactory(provider: ConfigService) {
   return () => provider.getDataFromJson('assets/config/data.json');
@@ -61,6 +62,7 @@ export function translateFactory(provider: TranslateService) {
     UsersModule.forRoot(),
     TelegramBotTesterModule.forRoot(),
     TelegramBotResultsModule.forRoot(),
+    TelegramBotChatsModule.forRoot(),
   ],
   providers: [
     WebSocketService,
