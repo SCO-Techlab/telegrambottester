@@ -18,6 +18,7 @@
     "label.header.btn.telegram-bot": "Bot tester",
     "label.header.btn.telegram-results": "Resultados",
     "label.header.btn.manage-users": "Usuarios",
+    "label.header.btn.telegram-chats": "Chats",
 
     "label.telegram-bot-tester.state.sendMessage.success": "Mensaje envíado con éxito",
     "label.telegram-bot-tester.state.sendMessage.error": "Error intentando envíar el mensaje",
@@ -189,5 +190,29 @@
     "label.add-edit-users.dialog.form.validate.confirm.length": "Confirmación longitud inválida (min 8, max 30)",
     "label.add-edit-users.dialog.form.validate.confirm.pattern": "Confirmación formato inválido (2 número, 2 letra, 2 carácterer)",
     "label.add-edit-users.dialog.form.validate.confirm.equals": "Las contraseñas no coinciden",
-    "label.add-edit-users.dialog.form.validate.role": "Rol no informado"
+    "label.add-edit-users.dialog.form.validate.role": "Rol no informado",
+
+    "label.telegram-bot-chats.state.fetch.success": "Chats recuperados correctamente",
+    "label.telegram-bot-chats.state.fetch.error": "Error intentando recuperar los chats",
+    "label.telegram-bot-chats.state.create.success": "Chat añadido correctamente",
+    "label.telegram-bot-chats.state.create.error": "Error intentando añadir un nuevo chat",
+    "label.telegram-bot-chats.state.update.success": "Chat actualizado correctamente",
+    "label.telegram-bot-chats.state.update.error": "Error intentando actualizar el chat",
+    "label.telegram-bot-chats.state.delete.success": "Chat eliminado correctamente",
+    "label.telegram-bot-chats.state.delete.error": "Error intentando eliminar el chat",
+
+    "label.telegram-bot.chats.component.cols.date": "Creado en",
+    "label.telegram-bot.chats.component.cols.updatedDate": "Actualizado en",
+    "label.telegram-bot.chats.component.cols.chatId": "Chat id",
+    "label.telegram-bot.chats.component.cols.description": "Descripcción",
+    "label.telegram-bot.chats.component.confirm-dialog.title": "Eliminar chat",
+    "label.telegram-bot.chats.component.confirm-dialog.text": "¿Estás seguro de querer eliminar el chat?",
+    "label.telegram-bot.chats.component.add-edit-chats-dialog.title.add": "Nuevo chat",
+    "label.telegram-bot.chats.component.add-edit-chats-dialog.title.update": "Editar chat",
+
+    "label.add-edit-chats.dialog.form.validate.chatId": "Chat id no informado",
+    "label.add-edit-chats.dialog.input.chatId": "Introduzca el chat id",
+    "label.add-edit-chats.dialog.input.chatId.placeholder": "Chat id",
+    "label.add-edit-chats.dialog.input.description": "Introduzca la descripcción",
+    "label.add-edit-chats.dialog.input.description.placeholder": "descripcción"
 }
