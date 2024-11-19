@@ -2,7 +2,7 @@ export const environment = {
   name: 'dev',
   production: false,
   apiUrl: `http://localhost:3000/api/v1`,
-  socketUrl: `ws://localhost:3001`,
+  socketUrl: `ws://localhost:3000`,
   httpsEnabled: false,
 };
 

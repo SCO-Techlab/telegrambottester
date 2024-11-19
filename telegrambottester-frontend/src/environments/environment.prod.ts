@@ -2,7 +2,7 @@ export const environment = {
   name: 'prod',
   production: true,
   apiUrl: `http://testertelegrambot.sco-techlab.es:3100/api/v1`,
-  socketUrl: `ws://testertelegrambot.sco-techlab.es:3101`,
+  socketUrl: `ws://testertelegrambot.sco-techlab.es:3100`,
   httpsEnabled: true,
 };
 
