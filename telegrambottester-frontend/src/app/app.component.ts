@@ -1,5 +1,4 @@
 import { Component, HostListener, OnInit } from "@angular/core";
-import { ConfigService } from "./shared/config/config.service";
 import { WebSocketService } from "./websocket/websocket.service";
 import { SpinnerService } from "./shared/spinner/spinner.service";
 import { ResolutionService } from './shared/resolution/resolution.service';
@@ -18,14 +17,12 @@ import { ToastService } from './shared/toast/toast.service';
 })
 export class AppComponent implements OnInit {
   
-  public title: string;
   public viewMode: string;
 
   @Select(AuthState.loggedUser) loggedUser$: Observable<User>;
   public loggedUser: User;
 
   constructor(
-    private readonly configService: ConfigService,
     private readonly websocketsService: WebSocketService,
     public readonly spinnerService: SpinnerService,
     public readonly resolutionService: ResolutionService,
@@ -33,10 +30,6 @@ export class AppComponent implements OnInit {
     private readonly store: Store,
     private readonly toatService: ToastService,
   ) {
-    if (this.configService.getData(this.configService.configConstants.TITLE)) {
-      this.title = this.configService.getData(this.configService.configConstants.TITLE) || 'sco-telegram-bot-tester';
-    }
-
     this.viewMode = this.resolutionService.getMode();
 
     this.websocketsService.connect();

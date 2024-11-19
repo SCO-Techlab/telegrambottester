@@ -183,8 +183,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
   }
 
   private validatePasswordRecoveryDate() {
-    const tokenExpirationMinutes: number = 
-      this.configService.getData(this.configService.configConstants.TOKEN_EXPIRATION_PWD_RECOVERY) || 30;
+    const tokenExpirationMinutes: number = this.configService.getData(this.configService.configConstants.TOKEN_EXPIRATION_PWD_RECOVERY) || 30;
     const dateNow: Date = new Date();
 
     const duration = moment.duration(moment(dateNow).diff(moment(this.user.pwdRecoveryDate)));

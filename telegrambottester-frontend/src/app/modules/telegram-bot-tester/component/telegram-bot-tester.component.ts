@@ -9,8 +9,6 @@ import { ResolutionService } from 'src/app/shared/resolution/resolution.service'
 import { SendMessage } from '../model/send-message';
 import { ToastService } from 'src/app/shared/toast/toast.service';
 import { Select, Store } from '@ngxs/store';
-import { TelegramBotTesterMockConstants } from 'src/app/shared/constants/telegram-bot-tester.mock.constants';
-import { environment } from 'src/environments/environment';
 import { ConfigService } from 'src/app/shared/config/config.service';
 import { AuthState } from '../../auth/store/auth.state';
 import { Observable } from 'rxjs';
@@ -54,10 +52,6 @@ export class TelegramBotTesterComponent implements OnInit, OnDestroy {
       chat_id: new FormControl('', [Validators.required]),
       text: new FormControl('', [Validators.required]),
     });
-
-    if (!environment.production || this.configService.getData(this.configService.configConstants.START_MOCKED_VALUES)) {
-      this.setMockedValues();
-    }
   }
 
   ngOnDestroy(): void {
@@ -74,7 +68,7 @@ export class TelegramBotTesterComponent implements OnInit, OnDestroy {
       return;
     }
 
-    if (this.configService.getData(this.configService.configConstants.ONLY_GROUP_ID) && sendMessage.chat_id[0] != '-') {
+    if (sendMessage.chat_id[0] != '-') {
       sendMessage.chat_id = `-${sendMessage.chat_id}`;
     }
 
@@ -96,9 +90,7 @@ export class TelegramBotTesterComponent implements OnInit, OnDestroy {
           return;
         }
 
-        if (this.configService.getData(this.configService.configConstants.RESET_FORM_AFTER_SUCCESS_REQUEST)) {
-          this.onCLickClean();
-        }
+        this.onCLickClean();
         this.spinnerService.hideSpinner();
         this.toastService.addSuccessMessage(this.store.selectSnapshot(TelegramBotTesterState.successMsg));
         return;
@@ -151,12 +143,6 @@ export class TelegramBotTesterComponent implements OnInit, OnDestroy {
     }
 
     return true;
-  }
-
-  private setMockedValues() {
-    this.sendMessageForm.controls.token.setValue(TelegramBotTesterMockConstants.TOKEN);
-    this.sendMessageForm.controls.chat_id.setValue(TelegramBotTesterMockConstants.CHAT_ID);
-    this.sendMessageForm.controls.text.setValue(TelegramBotTesterMockConstants.TEXT);
   }
 
   @HostListener('document:keypress', ['$event'])
