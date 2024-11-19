@@ -1,0 +1,38 @@
+<div class="add-edit-chats-dialog">
+  <h1 mat-dialog-title class="add-edit-chats-dialog__title">
+    {{ !edit ? data.title : data.title + ': ' + data.telegramBotChat?.chatId }}
+  </h1>
+  <div mat-dialog-content class="add-edit-chats-dialog__content">
+    <form [formGroup]="addEditChatsDialogForm">
+
+      <mat-form-field appearance="fill" class="d-block mt-2" [ngClass]="{
+        'valid-input': !addEditChatsDialogForm.controls.chatId.invalid
+      }">
+        <mat-label>{{'label.add-edit-chats.dialog.input.chatId' | appTranslate}}</mat-label>
+        <input matInput [placeholder]="'label.add-edit-chats.dialog.input.chatId.placeholder' | appTranslate" formControlName="chatId">
+        <mat-error *ngIf="addEditChatsDialogForm.controls.chatId.invalid">
+          {{formsService.getError('chatId', formErrors)}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="d-block mt-2" [ngClass]="{
+        'valid-input': !addEditChatsDialogForm.controls.description.invalid
+      }">
+        <mat-label>{{'label.add-edit-chats.dialog.input.description' | appTranslate}}</mat-label>
+        <input matInput [placeholder]="'label.add-edit-chats.dialog.input.description.placeholder' | appTranslate" formControlName="description">
+        <mat-error *ngIf="addEditChatsDialogForm.controls.description.invalid">
+          {{formsService.getError('description', formErrors)}}
+        </mat-error>
+      </mat-form-field>
+
+    </form>
+  </div>
+  <div mat-dialog-actions class="add-edit-chats-dialog__buttons" [align]="'end'">
+    <button mat-button (click)="onNoClick()" [color]="'warn'">
+      {{'label.cancel' | appTranslate}}
+    </button>
+    <button mat-button (click)="onClickSubmit()" [color]="'accent'" cdkFocusInitial>
+      {{ edit ? ('label.update' | appTranslate) : ('label.add' | appTranslate) }}
+    </button>
+  </div>
+</div>
