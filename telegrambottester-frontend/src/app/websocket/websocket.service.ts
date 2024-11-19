@@ -19,13 +19,7 @@ export class WebSocketService extends Socket {
   }
 
   sendMessage(event: string, data?: any): void {
-    if (data) {
-      this.emit(event, data);
-      return;
-    }
-
-    this.emit(event);
-    return;
+    data ? this.emit(event, data) : this.emit(event);
   }
 
   getMessage(event: string): Observable<any> {
@@ -38,9 +32,7 @@ export class WebSocketService extends Socket {
 
   connect() {
     this.on('connect', () => {
-      if (!environment.production) {
-        console.log('Conexión con Backend');
-      }
+      if (!environment.production) console.log('Conexión con Backend');
     });
 
     this.on('connect_error', (error) => {
