@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { LoggerService } from './modules/logger/logger.service';
+import { LoggerService } from './app.logger.service';
 import { ConfigService } from '@nestjs/config';
 import { HttpException, HttpStatus, ValidationError, ValidationPipe } from '@nestjs/common';
 import { WebsocketAdapter } from './modules/websocket/adapter/websocket-adapter';

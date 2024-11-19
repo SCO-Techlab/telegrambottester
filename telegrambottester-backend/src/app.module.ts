@@ -1,6 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TelegramBotModule } from './modules/telegram-bot/telegram-bot.module';
-import { LoggerModule } from './modules/logger/logger.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { configurationApp } from './configuration/configuration-app';
 import { WebsocketModule } from './modules/websocket/websocket.module';
@@ -16,8 +15,8 @@ import { configurationAuth } from './configuration/configuration-auth';
 import { AuthModule } from './modules/auth/auth.module';
 import { AuthConfig } from './modules/auth/config/auth.config';
 import { TelegramBotResultsModule } from './modules/telegram-bot-results/telegram-bot-results.module';
-import { DummyModule } from './modules/dummy/dummy.module';
 import { PublicMiddleware } from './middlewares/public.middleware';
+import { LoggerService } from './app.logger.service';
 
 @Module({
   imports: [
@@ -78,12 +77,13 @@ import { PublicMiddleware } from './middlewares/public.middleware';
       },
       inject: [ConfigService],
     }),
-    LoggerModule,
-    DummyModule,
     UsersModule,
     TelegramBotModule,
     TelegramBotResultsModule,
   ],
+  providers: [
+    LoggerService,
+  ]
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer): void {
