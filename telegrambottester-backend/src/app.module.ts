@@ -18,6 +18,7 @@ import { TelegramBotResultsModule } from './modules/telegram-bot-results/telegra
 import { PublicMiddleware } from './middlewares/public.middleware';
 import { LoggerService } from './app.logger.service';
 import { TelegramBotChatsModule } from './modules/telegram-bot-chats/telegram-bot-chats.module';
+import { TelegramBotTokensModule } from './modules/telegram-bot-tokens/telegram-bot-tokens.module';
 
 @Module({
   imports: [
@@ -82,6 +83,7 @@ import { TelegramBotChatsModule } from './modules/telegram-bot-chats/telegram-bo
     TelegramBotModule,
     TelegramBotResultsModule,
     TelegramBotChatsModule,
+    TelegramBotTokensModule,
   ],
   providers: [
     LoggerService,

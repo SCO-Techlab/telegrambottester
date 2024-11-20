@@ -159,5 +159,35 @@ export const validationErrorMessages = {
             INVALID_VALUE: 'TypeObj should be string value',
         },
     },
+    TELEGRAM_BOT_TOKEN: {
+        ID: {
+            NOT_EMPTY: '_id should be not empty',
+            INVALID_VALUE: '_id should be string value',
+        },
+        TOKEN: {
+            NOT_EMPTY: 'Token should be not empty',
+            INVALID_VALUE: 'Token should be string value',
+        },
+        USER: {
+            NOT_EMPTY: 'User should be not empty',
+            INVALID_VALUE: 'User should be object (UserDto)',
+        },
+        DESCRIPTION: {
+            NOT_EMPTY: 'Description should be not empty',
+            INVALID_VALUE: 'Description should be string value',
+        },
+        CREATED_AT: {
+            NOT_EMPTY: 'Created at should be not empty',
+            INVALID_VALUE: 'Created at should be Date value',
+        },
+        UPDATED_AT: {
+            NOT_EMPTY: 'Updated at should be not empty',
+            INVALID_VALUE: 'Updated at should be Date value',
+        },
+        TYPE_OBJ: {
+            NOT_EMPTY: 'TypeObj should be not empty',
+            INVALID_VALUE: 'TypeObj should be string value',
+        },
+    },
 };
     
