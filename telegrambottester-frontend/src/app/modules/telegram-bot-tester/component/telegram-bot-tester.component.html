@@ -1,3 +1,38 @@
+<div class="telegram-bot-tester mb-5" *ngIf="telegramBotChats && telegramBotChats.length > 0">
+  <mat-card class="telegram-bot-tester__card mat-elevation-z8" [ngClass]="{
+    'telegram-bot-tester__card--mobile': resolutionService.getMode() == resolutionService.resolutionConstants.MOBILE,
+    'telegram-bot-tester__card--tablet': resolutionService.getMode() == resolutionService.resolutionConstants.TABLET
+  }">
+    <mat-card-content>
+      <div class="row">
+        <div class="col-12">
+          <h3>{{ 'label.telegram-bot.component.formSelect.title' | appTranslate }}</h3>
+          <form [formGroup]="selectDataForm">
+            <div class="d-flex justify-content-center align-items-center">
+              <mat-form-field appearance="fill" class="d-block mt-2 flex-grow-1">
+                <mat-label>{{'label.telegram-bot.component.formSelect.chatId' | appTranslate}}</mat-label>
+                <mat-select formControlName="chatId" 
+                  [placeholder]="'label.telegram-bot.component.formSelect.chatId.placeholder' | appTranslate" 
+                  (selectionChange)="onUserChatIdChange()"
+                >
+                  <ng-container *ngFor="let option of telegramBotChats;">
+                    <mat-option [value]="option.chatId">{{option.chatId}}<span *ngIf="option.description">
+                      &nbsp;&nbsp;-&nbsp;&nbsp;{{option.description}}</span>
+                    </mat-option>  
+                  </ng-container>
+                </mat-select>
+              </mat-form-field>
+              <button class="mb-2 ms-2" color="warn" mat-icon-button (click)="onCleanUserChatId()">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
 <div class="telegram-bot-tester">
   <mat-card class="telegram-bot-tester__card mat-elevation-z8" [ngClass]="{
     'telegram-bot-tester__card--mobile': resolutionService.getMode() == resolutionService.resolutionConstants.MOBILE,

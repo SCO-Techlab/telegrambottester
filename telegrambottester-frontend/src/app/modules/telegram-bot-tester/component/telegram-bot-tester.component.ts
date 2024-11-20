@@ -9,12 +9,14 @@ import { ResolutionService } from 'src/app/shared/resolution/resolution.service'
 import { SendMessage } from '../model/send-message';
 import { ToastService } from 'src/app/shared/toast/toast.service';
 import { Select, Store } from '@ngxs/store';
-import { ConfigService } from 'src/app/shared/config/config.service';
 import { AuthState } from '../../auth/store/auth.state';
 import { Observable } from 'rxjs';
 import { User } from '../../users/model/user';
 import { SendMessageGroup } from '../store/telegram-bot-tester.actions';
 import { TelegramBotTesterState } from '../store/telegram-bot-tester.state';
+import { TelegramBotChat } from '../../telegram-bot-chats/model/telegram-bot-chat';
+import { TelegramBotChatsState } from '../../telegram-bot-chats/store/telegram-bot-chats.state';
+import { FetchTelegramBotChats } from '../../telegram-bot-chats/store/telegram-bot-chats.actions';
 
 @Component({
   selector: 'app-telegram-bot-tester',
@@ -29,6 +31,9 @@ export class TelegramBotTesterComponent implements OnInit, OnDestroy {
   @Select(AuthState.loggedUser) loggedUser$: Observable<User>;
   public loggedUser: User;
 
+  public telegramBotChats: TelegramBotChat[];
+  public selectDataForm: FormGroup;
+
   constructor(
     public readonly resolutionService: ResolutionService,
     private readonly translateService: TranslateService,
@@ -36,21 +41,49 @@ export class TelegramBotTesterComponent implements OnInit, OnDestroy {
     private readonly spinnerService: SpinnerService,
     private readonly toastService: ToastService,
     private readonly store: Store,
-    private readonly configService: ConfigService,
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.loggedUser$.subscribe((loggedUser: User) => {
       this.loggedUser = undefined;
       if (loggedUser && loggedUser._id) {
         this.loggedUser = loggedUser;
       }
     });
+
+    this.telegramBotChats = [];
+    if (this.loggedUser) {
+      this.telegramBotChats = await new Promise<TelegramBotChat[]>((resolve) => {
+        this.spinnerService.showSpinner();
+        this.store.dispatch(new FetchTelegramBotChats({ filter: { user: this.loggedUser.name } })).subscribe({
+          next: () => {
+            this.spinnerService.hideSpinner(); 
+
+            if (
+              this.store.selectSnapshot(TelegramBotChatsState.telegramBotChats) && 
+              this.store.selectSnapshot(TelegramBotChatsState.telegramBotChats).length > 0
+            ) {
+              resolve(cloneDeep(this.store.selectSnapshot(TelegramBotChatsState.telegramBotChats)));
+            } else {
+              resolve([]);
+            }
+          },
+          error: () => {
+            this.spinnerService.hideSpinner();
+            resolve([]);
+          },
+        });
+      });
+    }
     
     this.sendMessageForm = new FormGroup({
       token: new FormControl('', [Validators.required]),
       chat_id: new FormControl('', [Validators.required]),
       text: new FormControl('', [Validators.required]),
+    });
+
+    this.selectDataForm = new FormGroup({
+      chatId: new FormControl(''),
     });
   }
 
@@ -90,6 +123,7 @@ export class TelegramBotTesterComponent implements OnInit, OnDestroy {
           return;
         }
 
+        this.selectDataForm.reset();
         this.onCLickClean();
         this.spinnerService.hideSpinner();
         this.toastService.addSuccessMessage(this.store.selectSnapshot(TelegramBotTesterState.successMsg));
@@ -152,5 +186,20 @@ export class TelegramBotTesterComponent implements OnInit, OnDestroy {
     }
 
     this.onClickSubmit();
+  }
+
+  onUserChatIdChange() {
+    const selected_chat_id: string = this.selectDataForm.value.chatId;
+    if (!selected_chat_id || (selected_chat_id && selected_chat_id.length == 0)) {
+      this.sendMessageForm.controls.chat_id.setValue('');
+      return;
+    }
+
+    this.sendMessageForm.controls.chat_id.setValue(selected_chat_id);
+  }
+
+  onCleanUserChatId() {
+    this.selectDataForm.controls.chatId.setValue('');
+    this.sendMessageForm.controls.chat_id.setValue('');
   }
 }

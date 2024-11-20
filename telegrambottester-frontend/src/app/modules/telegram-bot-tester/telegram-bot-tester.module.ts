@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgxsModule } from '@ngxs/store';
 import { TelegramBotTesterState } from './store/telegram-bot-tester.state';
 import { TelegramBotTesterService } from './telegram-bot-tester.service';
+import { MatSelectModule } from '@angular/material/select';
 
 export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
   if (parentModule) {
@@ -34,6 +35,7 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatSelectModule,
 
     NgxsModule.forFeature(
       [
