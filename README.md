@@ -17,7 +17,6 @@ Con Telegram Bot Tester, puedes realizar pruebas exhaustivas de mensajería con 
 
 # Ejemplo
 - https://telegrambottester-sco-techlab.es:3000/
-- Public // Public123456! (No es necesario iniciar sesión para la realización de pruebas de mensajeria)
 
 # Envío de mensajes
 - Grupo público de pruebas de la aplicación: https://web.telegram.org/k/#-4173364857

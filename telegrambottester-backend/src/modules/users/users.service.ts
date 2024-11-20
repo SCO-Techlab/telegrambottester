@@ -4,21 +4,15 @@ import { UserDto } from './dto/user.dto';
 import { IUser } from './interface/iuser.interface';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { usersConstants } from './constants/user.constants';
-import { ConfigService } from '@nestjs/config';
 import { RoleConstants } from './constants/role.constants';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @Inject('MODEL') private readonly UserModel: Model<IUser>,
-    private readonly configService: ConfigService,
-  ) {}
+
+  constructor(@Inject('MODEL') private readonly UserModel: Model<IUser>) {}
 
   async onModuleInit() {
-    if (this.configService.get('app.population')) {
-      await this.populatePublicUser();
-      await this.populateAdminUser();
-    }
+    await this.populateAdminUser();
   }
 
   async fetchUsers(where?: any): Promise<IUser[]> {
@@ -163,30 +157,12 @@ export class UsersService {
     return UserDto;
   }
 
-  private async populatePublicUser() {
-    const existPublicUser: IUser = await this.findUserByName(usersConstants.PUBLIC.NAME);
-    if (existPublicUser) return;
-
-    const userPublicDto: UserDto = {
-      name: usersConstants.PUBLIC.NAME,
-      password: usersConstants.PUBLIC.PASSWORD,
-      email: usersConstants.PUBLIC.EMAIL,
-      active: usersConstants.PUBLIC.ACTIVE,
-      role: usersConstants.PUBLIC.ROLE,
-    }
-
-    const createdPublicUser: IUser = await this.addUser(userPublicDto);
-    if (!createdPublicUser) {
-      console.log(`[populatePublicUser] Unnable to create '${usersConstants.PUBLIC.NAME}' user`);
-      return;
-    }
-    
-    console.log(`[populatePublicUser] User '${usersConstants.PUBLIC.NAME}' added successfully`);
-  }
-
   private async populateAdminUser() {
     const existAdminUser: IUser = await this.findUserByName(usersConstants.ADMIN.NAME);
     if (existAdminUser) return;
+
+    const exist_admin_role_users: IUser[] = await this.fetchUsers({ role: RoleConstants.ADMIN });
+    if (exist_admin_role_users && exist_admin_role_users.length > 0) return;
 
     const userAdminDto: UserDto = {
       name: usersConstants.ADMIN.NAME,
