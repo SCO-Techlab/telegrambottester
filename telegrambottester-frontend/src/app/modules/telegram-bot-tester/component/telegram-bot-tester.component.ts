@@ -17,6 +17,9 @@ import { TelegramBotTesterState } from '../store/telegram-bot-tester.state';
 import { TelegramBotChat } from '../../telegram-bot-chats/model/telegram-bot-chat';
 import { TelegramBotChatsState } from '../../telegram-bot-chats/store/telegram-bot-chats.state';
 import { FetchTelegramBotChats } from '../../telegram-bot-chats/store/telegram-bot-chats.actions';
+import { TelegramBotToken } from '../../telegram-bot-tokens/model/telegram-bot-token';
+import { FetchTelegramBotTokens } from '../../telegram-bot-tokens/store/telegram-bot-tokens.actions';
+import { TelegramBotTokensState } from '../../telegram-bot-tokens/store/telegram-bot-tokens.state';
 
 @Component({
   selector: 'app-telegram-bot-tester',
@@ -31,6 +34,7 @@ export class TelegramBotTesterComponent implements OnInit, OnDestroy {
   @Select(AuthState.loggedUser) loggedUser$: Observable<User>;
   public loggedUser: User;
 
+  public telegramBotTokens: TelegramBotToken[];
   public telegramBotChats: TelegramBotChat[];
   public selectDataForm: FormGroup;
 
@@ -50,6 +54,31 @@ export class TelegramBotTesterComponent implements OnInit, OnDestroy {
         this.loggedUser = loggedUser;
       }
     });
+
+    this.telegramBotTokens = [];
+    if (this.loggedUser) {
+      this.telegramBotTokens = await new Promise<TelegramBotToken[]>((resolve) => {
+        this.spinnerService.showSpinner();
+        this.store.dispatch(new FetchTelegramBotTokens({ filter: { user: this.loggedUser.name } })).subscribe({
+          next: () => {
+            this.spinnerService.hideSpinner(); 
+
+            if (
+              this.store.selectSnapshot(TelegramBotTokensState.telegramBotTokens) && 
+              this.store.selectSnapshot(TelegramBotTokensState.telegramBotTokens).length > 0
+            ) {
+              resolve(cloneDeep(this.store.selectSnapshot(TelegramBotTokensState.telegramBotTokens)));
+            } else {
+              resolve([]);
+            }
+          },
+          error: () => {
+            this.spinnerService.hideSpinner();
+            resolve([]);
+          },
+        });
+      });
+    }
 
     this.telegramBotChats = [];
     if (this.loggedUser) {
@@ -83,6 +112,7 @@ export class TelegramBotTesterComponent implements OnInit, OnDestroy {
     });
 
     this.selectDataForm = new FormGroup({
+      token: new FormControl(''),
       chatId: new FormControl(''),
     });
   }
@@ -181,11 +211,23 @@ export class TelegramBotTesterComponent implements OnInit, OnDestroy {
 
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
-    if (event.key != 'Enter') {
+    if (event.key != 'Enter') return;
+    this.onClickSubmit();
+  }
+
+  onUserTokenChange() {
+    const selected_chat_token: string = this.selectDataForm.value.token;
+    if (!selected_chat_token || (selected_chat_token && selected_chat_token.length == 0)) {
+      this.sendMessageForm.controls.token.setValue('');
       return;
     }
 
-    this.onClickSubmit();
+    this.sendMessageForm.controls.token.setValue(selected_chat_token);
+  }
+
+  onCleanUserToken() {
+    this.selectDataForm.controls.token.setValue('');
+    this.sendMessageForm.controls.token.setValue('');
   }
 
   onUserChatIdChange() {
