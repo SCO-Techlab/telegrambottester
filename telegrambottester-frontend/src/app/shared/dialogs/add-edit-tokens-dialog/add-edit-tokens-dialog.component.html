@@ -1,0 +1,38 @@
+<div class="add-edit-tokens-dialog">
+  <h1 mat-dialog-title class="add-edit-tokens-dialog__title">
+    {{ !edit ? data.title : data.title + ': ' + data.telegramBotToken?.token }}
+  </h1>
+  <div mat-dialog-content class="add-edit-tokens-dialog__content">
+    <form [formGroup]="addEditTokensDialogForm">
+
+      <mat-form-field appearance="fill" class="d-block mt-2" [ngClass]="{
+        'valid-input': !addEditTokensDialogForm.controls.token.invalid
+      }">
+        <mat-label>{{'label.add-edit-tokens.dialog.input.token' | appTranslate}}</mat-label>
+        <input matInput [placeholder]="'label.add-edit-tokens.dialog.input.token.placeholder' | appTranslate" formControlName="token">
+        <mat-error *ngIf="addEditTokensDialogForm.controls.token.invalid">
+          {{formsService.getError('token', formErrors)}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="d-block mt-2" [ngClass]="{
+        'valid-input': !addEditTokensDialogForm.controls.description.invalid
+      }">
+        <mat-label>{{'label.add-edit-tokens.dialog.input.description' | appTranslate}}</mat-label>
+        <input matInput [placeholder]="'label.add-edit-tokens.dialog.input.description.placeholder' | appTranslate" formControlName="description">
+        <mat-error *ngIf="addEditTokensDialogForm.controls.description.invalid">
+          {{formsService.getError('description', formErrors)}}
+        </mat-error>
+      </mat-form-field>
+
+    </form>
+  </div>
+  <div mat-dialog-actions class="add-edit-tokens-dialog__buttons" [align]="'end'">
+    <button mat-button (click)="onNoClick()" [color]="'warn'">
+      {{'label.cancel' | appTranslate}}
+    </button>
+    <button mat-button (click)="onClickSubmit()" [color]="'accent'" cdkFocusInitial>
+      {{ edit ? ('label.update' | appTranslate) : ('label.add' | appTranslate) }}
+    </button>
+  </div>
+</div>

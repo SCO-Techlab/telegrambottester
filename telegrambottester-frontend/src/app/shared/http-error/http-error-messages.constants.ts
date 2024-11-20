@@ -33,6 +33,11 @@ export const httpErrorMessages = {
     UNNABLE_CREATE_TELEGRAM_BOT_CHAT: 'Unnable to create telegram bot chat',
     TELEGRAM_BOT_CHAT_ALREADY_EXIST: 'Telegram bot chat already exist',
   },
+  TELEGRAM_BOT_TOKENS: {
+    TELEGRAM_BOT_TOKEN_NOT_FOUND: 'Telegram bot token not found',
+    UNNABLE_CREATE_TELEGRAM_BOT_TOKEN: 'Unnable to create telegram bot token',
+    TELEGRAM_BOT_TOKEN_ALREADY_EXIST: 'Telegram bot token already exist',
+  },
   APP: {
     METHOD_NOT_IMPLEMENTED: 'Method not implemented',
     METHOD_NOT_ALLOWED: 'Method not allowed',

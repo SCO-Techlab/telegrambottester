@@ -11,6 +11,7 @@ import { AuthGuard } from './guards/auth.guard.service';
 import { RoleGuard } from './guards/role.guard.service';
 import { ManageUsersComponent } from './modules/users/components/manage-users/manage-users.component';
 import { TelegramBotChatsComponent } from './modules/telegram-bot-chats/component/telegram-bot-chats.component';
+import { TelegramBotTokensComponent } from './modules/telegram-bot-tokens/component/telegram-bot-tokens.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,11 @@ const routes: Routes = [
   {
     path: 'chats',
     component: TelegramBotChatsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'tokens',
+    component: TelegramBotTokensComponent,
     canActivate: [AuthGuard],
   },
   { path: '', redirectTo: '', pathMatch: 'full' },

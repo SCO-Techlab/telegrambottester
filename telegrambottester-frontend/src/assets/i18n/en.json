@@ -19,6 +19,7 @@
     "label.header.btn.telegram-results": "Results",
     "label.header.btn.manage-users": "Users",
     "label.header.btn.telegram-chats": "Chats",
+    "label.header.btn.telegram-tokens": "Tokens",
 
     "label.telegram-bot-tester.state.sendMessage.success": "Message sent succesfully",
     "label.telegram-bot-tester.state.sendMessage.error": "Error trying to send message",
@@ -218,5 +219,29 @@
     "label.add-edit-chats.dialog.input.chatId": "Enter chat id",
     "label.add-edit-chats.dialog.input.chatId.placeholder": "Chat id",
     "label.add-edit-chats.dialog.input.description": "Enter description",
-    "label.add-edit-chats.dialog.input.description.placeholder": "Description"
+    "label.add-edit-chats.dialog.input.description.placeholder": "Description",
+
+    "label.telegram-bot-tokens.state.fetch.success": "Tokens recovered succesfully",
+    "label.telegram-bot-tokens.state.fetch.error": "Error trying to recover tokens",
+    "label.telegram-bot-tokens.state.create.success": "Token added succesfully",
+    "label.telegram-bot-tokens.state.create.error": "Error trying to add token",
+    "label.telegram-bot-tokens.state.update.success": "Token updated succesfully",
+    "label.telegram-bot-tokens.state.update.error": "Error trying to update token",
+    "label.telegram-bot-tokens.state.delete.success": "Token deleted succesfully",
+    "label.telegram-bot-tokens.state.delete.error": "Error trying to delete token",
+
+    "label.telegram-bot.tokens.component.cols.date": "Created at",
+    "label.telegram-bot.tokens.component.cols.updatedDate": "Updated at",
+    "label.telegram-bot.tokens.component.cols.token": "Token",
+    "label.telegram-bot.tokens.component.cols.description": "Descripcción",
+    "label.telegram-bot.tokens.component.confirm-dialog.title": "Delete token",
+    "label.telegram-bot.tokens.component.confirm-dialog.text": "Are you sure you want to delete the token?",
+    "label.telegram-bot.tokens.component.add-edit-tokens-dialog.title.add": "New token",
+    "label.telegram-bot.tokens.component.add-edit-tokens-dialog.title.update": "Edit token",
+
+    "label.add-edit-tokens.dialog.form.validate.token": "Token not provided",
+    "label.add-edit-tokens.dialog.input.token": "Enter token",
+    "label.add-edit-tokens.dialog.input.token.placeholder": "Token",
+    "label.add-edit-tokens.dialog.input.description": "Enter description",
+    "label.add-edit-tokens.dialog.input.description.placeholder": "Description"
 }
