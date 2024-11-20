@@ -16,7 +16,7 @@ export class TelegramBotResultsService {
 
   async fetchTelegramBotResults(where?: any): Promise<ITelegramBotResult[]> {
     try {
-      return await this.TelegramBotResultModel.find(where).populate('user');
+      return await this.TelegramBotResultModel.find(where).populate('user').sort({ createdAt: -1 });
     } catch (error) {
       console.log(`[fetchPermissions] Error: ${JSON.stringify(error)}`);
       return [];
