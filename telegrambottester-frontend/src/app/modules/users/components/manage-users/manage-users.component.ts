@@ -60,6 +60,7 @@ export class ManageUsersComponent implements OnInit, AfterViewInit, OnDestroy {
       "pwdRecoveryToken", 
       "pwdRecoveryDate", 
       "createdAt",
+      "updatedAt",
       "actions",
     ];
     this.labelsColumns = {
@@ -70,6 +71,7 @@ export class ManageUsersComponent implements OnInit, AfterViewInit, OnDestroy {
       pwdRecoveryToken: this.translateService.getTranslate('label.manage-users.component.cols.pwdRecoveryToken'),
       pwdRecoveryDate: this.translateService.getTranslate('label.manage-users.component.cols.pwdRecoveryDate'),
       createdAt: this.translateService.getTranslate('label.manage-users.component.cols.createdAt'),
+      updatedAt: this.translateService.getTranslate('label.manage-users.component.cols.updatedAt'),
     };
     this.dataSource = new MatTableDataSource<User>();
 

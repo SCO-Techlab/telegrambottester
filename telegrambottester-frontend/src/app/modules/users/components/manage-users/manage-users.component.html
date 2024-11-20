@@ -13,6 +13,9 @@
             <span *ngSwitchCase="'createdAt'">
               {{data[column] != undefined ? (data[column] | date: 'dd/MM/yyyy HH:mm') : '--'}}
             </span>
+            <span *ngSwitchCase="'updatedAt'">
+              {{data[column] != undefined ? (data[column] | date: 'dd/MM/yyyy HH:mm') : '--'}}
+            </span>
             <span *ngSwitchCase="'pwdRecoveryDate'">
               {{data[column] != undefined ? (data[column] | date: 'dd/MM/yyyy HH:mm') : '--'}}
             </span>
