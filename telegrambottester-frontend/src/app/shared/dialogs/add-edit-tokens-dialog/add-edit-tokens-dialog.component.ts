@@ -86,6 +86,16 @@ export class AddEditTokensDialogComponent implements OnInit, AfterViewInit {
       });
     }
 
+    if (form.token) {
+      const splitToken: string[] = form.token.split(':');
+      if (!splitToken  || splitToken && splitToken.length != 2) {
+        this.formErrors.push({ 
+          formControlName: 'token', 
+          error: this.translateService.getTranslate('label.add-edit-tokens.dialog.form.validate.token.format') 
+        });
+      }
+    }
+
     this.addEditTokensDialogForm = this.formsService.setErrors(this.addEditTokensDialogForm, this.formErrors);
   }
 }

@@ -242,6 +242,7 @@
     "label.telegram-bot.tokens.component.add-edit-tokens-dialog.title.update": "Edit token",
 
     "label.add-edit-tokens.dialog.form.validate.token": "Token not provided",
+    "label.add-edit-tokens.dialog.form.validate.token.format": "Token invalid format (XXXXX:YYYYY)",
     "label.add-edit-tokens.dialog.input.token": "Enter token",
     "label.add-edit-tokens.dialog.input.token.placeholder": "Token",
     "label.add-edit-tokens.dialog.input.description": "Enter description",
